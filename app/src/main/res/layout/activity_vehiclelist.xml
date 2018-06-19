@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Background"
+    tools:context=".VehicleListActivity">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="180px"
+        android:background="@color/HyundaiBlue"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="30px"
+            android:layout_height="54px"
+            android:layout_gravity="center"
+            android:layout_marginLeft="48px"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/navibar_back" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="284dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="나의 차량"
+            android:textColor="#FFFFFF"
+            android:textSize="48px" />
+
+        <ImageButton
+            android:id="@+id/imgOptions"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_gravity="center"
+            android:layout_marginRight="48px"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/navibar_setting" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="192px"
+        android:background="#0b131d"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="54px"
+            android:layout_height="54px"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/user_info" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txvUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|fill_vertical"
+                android:text="user_name"
+                android:textColor="#FFFFFF"
+                android:textSize="48px" />
+
+            <TextView
+                android:id="@+id/txvUsermail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|fill_vertical"
+                android:text="user_mail"
+                android:textColor="#E4DCD3"
+                android:textSize="36px" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_NoVehicle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:lineSpacingMultiplier="1.3"
+                android:text="등록된 차량이 없습니다.\n'차량 등록' 혹은\n'차량 공유 요청하기'로\n차량을 등록하세요."
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="48px" />
+
+            <Button
+                android:id="@+id/btnRegisterVehicles"
+                android:layout_width="468px"
+                android:layout_height="120px"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:width="468px"
+                android:background="@color/HyundaiSand"
+                android:text="차량 등록"
+                android:textSize="48px" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/ScrollView_VehicleList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout_NoVehicle"
+        tools:layout_editor_absoluteX="192dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="732px"
+            android:orientation="vertical"
+            android:scrollbars="vertical"
+            android:showDividers="middle">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="732px"
+                android:layout_marginEnd="48px"
+                android:layout_marginLeft="48px"
+                android:layout_marginRight="48px"
+                android:layout_marginStart="48px"
+                android:layout_marginTop="48px"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120px"
+                    android:background="@color/HyundaiBlue"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="302dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="K3"
+                        android:textColor="#FFFFFF"
+                        android:textSize="72px" />
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="46px"
+                        android:layout_height="46px"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="15dp"
+                        android:scaleType="fitEnd"
+                        app:srcCompat="@drawable/pencil_white" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="640px"
+                    android:layout_height="240px"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/img_k3" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/LayoutCarShareByOwner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:scaleType="fitEnd"
+                            app:srcCompat="@drawable/car_sharing" />
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="차량 공유"
+                            android:textColor="#FFFFFF"
+                            android:textSize="48px" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="3px"
+                        android:layout_height="48px"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:background="#4C545F" />
+
+                    <LinearLayout
+                        android:id="@+id/LayoutCarRemote"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:scaleType="centerInside"
+                            app:srcCompat="@drawable/remote_control" />
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:gravity="left|center"
+                            android:text="원격 제어"
+                            android:textColor="#FFFFFF"
+                            android:textSize="48px" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="3px"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:background="#4C545F" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginStart="15dp"
+                android:orientation="vertical">
+
+
+                <Button
+                    android:id="@+id/btnRegisterVehicles2"
+                    android:layout_width="468px"
+                    android:layout_height="120px"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/HyundaiSand"
+                    android:text="차량 등록"
+                    android:textSize="48px" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="216px"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <Button
+            android:id="@+id/btnRequestVehiclesShareByUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="48px"
+            android:layout_marginLeft="48px"
+            android:layout_marginRight="48px"
+            android:layout_marginTop="48px"
+            android:layout_weight="1"
+            android:background="#00aad2"
+            android:text="차량 공유 요청하기"
+            android:textColor="#FFFFFF"
+            android:textSize="48px" />
+
+    </LinearLayout>
+
+    <WebView
+        android:id="@+id/webview1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="8dp" />
+
+
+</android.support.constraint.ConstraintLayout>

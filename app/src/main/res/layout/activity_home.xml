@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/remote_main">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_height="180px"
+        android:background="@color/HyundaiBlue"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imgBack"
+            android:layout_width="30px"
+            android:layout_height="54px"
+            android:layout_gravity="center"
+            android:layout_marginLeft="48px"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/navibar_back" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="284dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="블루링크 이미지 없음"
+            android:textColor="#FFFFFF"
+            android:textSize="48px" />
+
+        <ImageButton
+            android:id="@+id/imgOptions"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_gravity="center"
+            android:layout_marginRight="48px"
+            android:background="#00000000"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/navibar_setting" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="762px"
+            android:layout_gravity="top"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Smart Entry"
+                android:textColor="#FFFFFF"
+                android:textSize="60px" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="스마트 엔트리란? Key없이 인증된 사용자가...\n2줄정도가 적합할 것 같습니다."
+                android:textColor="#AED1E1"
+                android:textSize="42px" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="276px"
+                    android:layout_height="276px"
+                    android:layout_gravity="bottom|center"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/smart_entry_otp" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="424px"
+                    android:layout_height="424px"
+                    android:layout_gravity="bottom|center"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/smart_entry_on" />
+
+                <ImageButton
+                    android:id="@+id/imageButton03"
+                    android:layout_width="276px"
+                    android:layout_height="276px"
+                    android:layout_gravity="bottom|center"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/smart_entry_off" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="top|center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="132px"
+                        android:layout_gravity="center"
+                        android:background="#00000000"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/remote_lock" />
+
+                    <TextView
+                        android:id="@+id/textView9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16px"
+                        android:gravity="center"
+                        android:text="문 잠금"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24px"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton5"
+                        android:layout_width="match_parent"
+                        android:layout_height="132px"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16px"
+                        android:background="#00000000"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/remote_lights" />
+
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16px"
+                        android:gravity="center"
+                        android:text="비상등"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/Button6"
+                android:layout_width="468px"
+                android:layout_height="468px"
+                android:background="@drawable/remote_circle_center"
+                android:gravity="center"
+
+                android:scaleType="centerInside"
+                android:text="Engine\nStart"
+                android:textColor="#FFFFFF"
+                android:textSize="54px" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton7"
+                        android:layout_width="match_parent"
+                        android:layout_height="132px"
+                        android:layout_gravity="center"
+                        android:background="#00000000"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/remote_unlock" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16px"
+                        android:gravity="center"
+                        android:text="문 열기"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24px"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButton8"
+                        android:layout_width="match_parent"
+                        android:layout_height="132px"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16px"
+                        android:background="#00000000"
+                        android:scaleType="centerInside"
+                        app:srcCompat="@drawable/remote_hornlight" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16px"
+                        android:gravity="center"
+                        android:text="비상등 + 경적"
+                        android:textColor="#FFFFFF" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="320px"
+            android:layout_weight="3"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16px"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imageButton10"
+                    android:layout_width="132px"
+                    android:layout_height="132px"
+                    android:layout_gravity="center"
+                    android:background="#00000000"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/remote_hvac_settings" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16px"
+                    android:gravity="center"
+                    android:text="공조 설정"
+                    android:textColor="#FFFFFF" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/imageButton12"
+                android:layout_width="476px"
+                android:layout_height="0px"
+                android:background="#00000000"
+                android:scaleType="centerInside"
+                android:visibility="invisible" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16px"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imageButton11"
+                    android:layout_width="132px"
+                    android:layout_height="132px"
+                    android:layout_gravity="center"
+                    android:background="#00000000"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/remote_charge_stop" />
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16px"
+                    android:gravity="center"
+                    android:text="Engine Stop"
+                    android:textColor="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

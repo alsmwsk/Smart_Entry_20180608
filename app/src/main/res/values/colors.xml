@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="Background">#001D3E</color>
+    <color name="HyundaiBlue">#002c5f</color>
+    <color name="ActiveBlue">#00AAD2</color>
+    <color name="SkyBlue">#AACAE6</color>
+    <color name="ActiveRed">#E63312</color>
+    <color name="Grey">#8F8E94</color>
+    <color name="LightGrey">#D8D8D8</color>
+    <color name="HyundaiSand">#E4DCD3</color>
+    <color name="HyundaiLightSand">#F6F3F2</color>
+</resources>
