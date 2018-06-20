@@ -18,10 +18,12 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
     /*
-    * Database가 존재하지 않을 때, 딱 한번 실행된다.
-    * DB를 만드는 역할을 한다.
-    * @param db
+     Database가 존재하지 않을 때, 딱 한번 실행된다.
+     DB를 만드는 역할을 한다.
+
+    @param db
     */
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {

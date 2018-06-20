@@ -62,7 +62,7 @@ public class VehicleListActivity extends AppCompatActivity {
     ImageView imgOptions;
     Button btnRegisterVehicles;
     Button btnRegisterVehicles2;
-    Button btnRequestVehiclesShareByUser;
+    Button btnRequestVehiclesShareByUser; // 차량공유요청
 
 
     Boolean isExistVehicles;
@@ -79,14 +79,17 @@ public class VehicleListActivity extends AppCompatActivity {
         setUIInfo(isVehicleRegistered); // 등록되어 있는 차량이 있으면 차량 목록이 나타나도록 설정하고
                                         // 등록되어 있지 않으면 차량이 없는 화면이 나타나도록 설정.
                                         // 현재 차량 목록은 직접 하드코딩으로 넣어둔 상태입니다.
+                                        // 차량목록 결과요청 함수
 
 
     }
 
+    //차량목록 결과 받아오는 함수
     private void setUIInfo(Boolean isVehicleRegistered) {
         linearLayout_NoVehicle = findViewById(R.id.linearLayout_NoVehicle);
         scrollView_VehicleList = findViewById(R.id.ScrollView_VehicleList);
 
+        //차량소유자가 차량공유버튼 눌렀을 경우
         LayoutCarShareByOwner = findViewById(R.id.LayoutCarShareByOwner);
         LayoutCarShareByOwner.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +102,7 @@ public class VehicleListActivity extends AppCompatActivity {
                         if (url.contains(REDIRECT_URI)) {
 
                             webView.setVisibility(View.INVISIBLE);
-                            int idx = url.indexOf("share_id");
+                            int idx = url.indexOf("share_id"); // 공유id
                             String id = url.substring(idx + 9);
 
                             if (idx < 0) {
@@ -121,13 +124,14 @@ public class VehicleListActivity extends AppCompatActivity {
                 webView.addJavascriptInterface(new MyJavascriptInterface(), "Android");
 
                 Map<String, String> extraHeaders = new HashMap<String, String>();
-                extraHeaders.put("Authorization","Bearer "+AccessToken);
+                extraHeaders.put("Authorization","Bearer "+AccessToken); //extraHeader... 규격서 참고해야함.
                 extraHeaders.put("Accept-Language","KO");
                 webView.setVisibility(View.VISIBLE);
                 webView.loadUrl(GET_REQUEST_CAR_SHARING_URL+userID+"/cars/"+carID+"/share",extraHeaders); // carID를 받아오지 못하여 확인할 수 없는 상황입니다.
             }
         });
 
+        //차량원격제어 클릭했을때 실행되는것
         LayoutCarRemote = findViewById(R.id.LayoutCarRemote);
         LayoutCarRemote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +146,7 @@ public class VehicleListActivity extends AppCompatActivity {
         txvUsermail = findViewById(R.id.txvUsermail);
         txvUsermail.setText(userEMail);
 
+        //뒤로가기 버튼 누르면 로그인 페이지로 이동.
         imgBack = findViewById(R.id.imgBack);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +171,10 @@ public class VehicleListActivity extends AppCompatActivity {
             linearLayout_NoVehicle.setVisibility(View.INVISIBLE);
             scrollView_VehicleList.setVisibility(View.VISIBLE);
         }
+
+        //신규 차량 등록 요청이 2가지가 있다..
+        //btnRegisterVehicles 아무것도 없는 상태에서 차량등록
+        //btnRegisterVehicles2 차량이 1개이상 있는 상태에서 차량등록
 
         btnRegisterVehicles = findViewById(R.id.btnRegisterVehicles);
         btnRegisterVehicles.setOnClickListener(new View.OnClickListener() { // 등록된 차량이 없는 화면에서의 차량 등록버튼
@@ -203,7 +212,7 @@ public class VehicleListActivity extends AppCompatActivity {
                 extraHeaders.put("Authorization","Bearer "+AccessToken);
                 extraHeaders.put("Accept-Language","KO");
                 webView.setVisibility(View.VISIBLE);
-                webView.loadUrl(GET_REGISTER_CAR_URL,extraHeaders);
+                webView.loadUrl(GET_REGISTER_CAR_URL,extraHeaders); //차량등록화면 웹뷰
             }
         });
         btnRegisterVehicles2 = findViewById(R.id.btnRegisterVehicles2); // 등록된 차량이 있는 화면에서의 차량 등록 버튼
@@ -281,8 +290,8 @@ public class VehicleListActivity extends AppCompatActivity {
                 webView.addJavascriptInterface(new MyJavascriptInterface(), "Android");
 
                 Map<String, String> extraHeaders = new HashMap<String, String>();
-                extraHeaders.put("Authorization","Bearer "+AccessToken);
-                extraHeaders.put("Accept-Language","KO");
+                extraHeaders.put("Authorization","Bearer "+AccessToken); // 규격서확인요망
+                extraHeaders.put("Accept-Language","KO"); // 규격서 확인요망
                 webView.setVisibility(View.VISIBLE);
                 webView.loadUrl(GET_REQUEST_CAR_SHARING_URL+userID+"/shares",extraHeaders);
             }
@@ -291,7 +300,7 @@ public class VehicleListActivity extends AppCompatActivity {
 
 
 
-
+    // 로그인 액티비티에서 넘겨받은 유저정보값 저장
     private void setIntentParams(){
         Intent thisIntent = getIntent();
 
@@ -299,10 +308,11 @@ public class VehicleListActivity extends AppCompatActivity {
         userEMail = thisIntent.getStringExtra("Email");
         userName = thisIntent.getStringExtra("Name");
         userMobileNum = thisIntent.getStringExtra("MobileNum");
-        AccessToken = thisIntent.getStringExtra("AccessToken");
+        AccessToken = thisIntent.getStringExtra("AccessToken"); // 액세스 토큰
     }
 
 
+    //차량목록 요청함수
     private Boolean getVehicleList(){
         isExistVehicles = false;
 
@@ -336,9 +346,9 @@ public class VehicleListActivity extends AppCompatActivity {
                             try
                             {
                                 JSONObject jsonObject = new JSONObject(page);
-                                String resCode = jsonObject.getString("resCode");
-                                String resMsg = jsonObject.getString("resMsg");
-                                String msgID = jsonObject.getString("msgID");
+                                String resCode = jsonObject.getString("resCode"); //결과 코드
+                                String resMsg = jsonObject.getString("resMsg"); // 결과 메세지
+                                String msgID = jsonObject.getString("msgID"); // 결과 id
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -364,10 +374,11 @@ public class VehicleListActivity extends AppCompatActivity {
         return true;
     }
 
+    //FINISH_INTERVAL TIME = 2000 2초
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) { // 종료부분 확인하기...
-        long tempTime = System.currentTimeMillis();
-        long intervalTime = tempTime - backPressedTime;
+        long tempTime = System.currentTimeMillis(); // 현재시간
+        long intervalTime = tempTime - backPressedTime; // 현재시간 - 뒤로가기버튼 누른시간
 
         if (webView.getVisibility() == View.VISIBLE){
             if (keyCode == KeyEvent.KEYCODE_BACK){

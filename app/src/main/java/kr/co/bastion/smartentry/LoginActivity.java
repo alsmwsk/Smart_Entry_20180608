@@ -56,6 +56,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         new Thread() { // 어플 실행시 push를 등록하는 부분. 로그인에 최초로 성공했을때 한번만 실행된다. Device ID 요청
             //로그인을 할 때마다 Device ID가 다르게 요청(전달)되는가?
             //무조건 실행
@@ -116,7 +117,7 @@ public class LoginActivity extends Activity {
 
                                 if (retCode.equals("S")) {
                                     jsonObject = new JSONObject(resMsg); // 조금헷갈림
-                                    DeviceID = jsonObject.getString("deviceId");
+                                    DeviceID = jsonObject.getString("deviceId"); // DeviceID 전달
                                 } else {
                                     Toast.makeText(getApplicationContext(),"푸시 등록 실패("+resMsg+")",Toast.LENGTH_SHORT).show();
                                 }
@@ -145,24 +146,30 @@ public class LoginActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) { // 로그인 화면에서 로그인을 누르면 아래 내용이 실행됨.
-                //화면이 시작되고 화면이 종료되는 순간에 실행된다.
+                //화면이 종료되는 순간에 실행된다.
                 super.onPageFinished(view, url);
                 Toast.makeText(LoginActivity.this, "onPageFinished : view : " + view + " url : " + url , Toast.LENGTH_LONG).show();
                 System.out.println(url);
+
+                // 앱을 시작하자마자 제일 먼저 호출됨
+                // http://bluelink.connected-car.io/api/v1/user/oauth2/authorize?response_type=code&client_id=25fa8900-60b0-4f5d-802b-04c7168f64ea&redirect_uri=http://bluelink.connected-car.io/api/v1/user/oauth2/redirect&state=smart_entry_account_01
+                // 로그인 url: "http://bluelink.connected-car.io/signin"
+
                 if (url.contains(REDIRECT_URI)) { // 넘어온 페이지의 url이 리다이렉트 url이 맞는지 확인하고,
                     // "http://bluelink.connected-car.io/api/v1/user/oauth2/redirect"
                     Log.d(TAG, "onPageFinished: redirect_url" + REDIRECT_URI);
-                    int idx = url.indexOf("state"); // 이해하기 힘든부분 state가 몇번째 인덱스에서 시작하는지 알려줌 시작인덱스는 0부터 없으면 -1 리턴함
-                    String state = url.substring(idx + 6); // 이해하기 힘든부분
+                    int idx = url.indexOf("state"); // state가 몇번째 인덱스에서 시작하는지 알려줌 시작인덱스는 0부터 없으면 -1 리턴함
+                    String state = url.substring(idx + 6); // smart_entry_account_01
 
                     if (idx < 0 || !state.equals(ACCOUNT_STATE)) { // 앞서 입력한 state 값이 정상적인지 체크.
                         Toast.makeText(getApplicationContext(), "잘못된 접근입니다.", Toast.LENGTH_LONG).show();
                         finish();
                     }
                     idx = url.indexOf("code");
-                    code = url.substring(idx + 5, idx + 5 + 22); // 인증 코드 획득 18자리
+                    code = url.substring(idx + 5, idx + 5 + 22); // 인증 코드 획득 18자리 그러나 값이 없다..?
 
 
+                    //로그인 요청 액세스 토큰 요청 전달 근데 code값 이상하다..
 //                    new Thread(){
 //                        public void run() { //
 //                            try {
@@ -222,10 +229,10 @@ public class LoginActivity extends Activity {
 //                                                page.append(line);
 //
 //                                            jsonObject = new JSONObject(page.toString());
-//                                            String user_ID = jsonObject.getString("id");
-//                                            String user_EMAIL = jsonObject.getString("email");
-//                                            String user_NAME = jsonObject.getString("name");
-//                                            String user_MOBILENUMBER = jsonObject.getString("mobileNum");
+//                                            String user_ID = jsonObject.getString("id"); id번호
+//                                            String user_EMAIL = jsonObject.getString("email"); email
+//                                            String user_NAME = jsonObject.getString("name"); 이름
+//                                            String user_MOBILENUMBER = jsonObject.getString("mobileNum"); 휴대폰번호
 //
 //                                            Intent resultIntent = new Intent(LoginActivity.this, VehicleListActivity.class); //차량목록 화면으로 넘어간다.
 //                                            resultIntent.putExtra("ID", user_ID);

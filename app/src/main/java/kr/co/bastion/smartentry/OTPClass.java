@@ -11,6 +11,7 @@ public class OTPClass {
         byte[] data = new byte[8];
 
         long value = time;
+        // value >>> = 8이 무슨뜻?
         for (int i = 8; i-- > 0; value >>>= 8){
             data[i] = (byte)value;
         }
@@ -21,6 +22,7 @@ public class OTPClass {
             byte[] hash = mac.doFinal(data);
 
             int offset = hash[20 - 1] & 0xF;
+            // byte 타입의 배열과 0xF의 & 연산결과
 
             long truncatedHash = 0;
             for (int i = 0; i < 4; i++) {

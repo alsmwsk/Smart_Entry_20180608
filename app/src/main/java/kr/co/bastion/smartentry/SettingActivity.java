@@ -61,14 +61,17 @@ public class SettingActivity extends AppCompatActivity {
 
     }
 
+    //스마트 엔트리 등록
     public void btnSmartEntryRegisteration(View v){ // QR code
         startQRCode();
     }
 
+    //스마트 엔트리 관리?
     public void btnSmartEntryUserManagement(View v){ //OTP
 
     }
 
+    //로그아웃을 하면 로그인 액티비티로 이동
     public void btnLogout(View v){
         Intent intent = new Intent(SettingActivity.this,LoginActivity.class);
         startActivity(intent);
@@ -80,6 +83,9 @@ public class SettingActivity extends AppCompatActivity {
         new IntentIntegrator(this).initiateScan();
     }
 
+
+    //QR코드 결과
+    //onActivityResult는 언제 실행되는 함수?
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
         //  com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
         //  = 0x0000c0de; // Only use bottom 16 bits
